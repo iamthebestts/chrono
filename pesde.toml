@@ -1,0 +1,36 @@
+name = "iamthebestts/chrono"
+version = "0.1.0"
+description = "Unified time scheduler for Luau — tasks, intervals, scopes, profiling"
+authors = ["iamthebestts"]
+repository = "https://github.com/iamthebestts/chrono"
+license = "MIT"
+
+includes = [
+    "pesde.toml",
+    "LICENSE",
+    "README.md",
+    "src/**/*.luau",
+    "!src/**/*.test.luau",
+    "!src/__tests__/**",
+    "!src/**/jest.config.lua",
+]
+
+[target]
+environment = "roblox"
+lib = "src/init.luau"
+build_files = ["src"]
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[scripts]
+roblox_sync_config_generator = ".pesde/scripts/roblox_sync_config_generator.luau"
+sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
+
+[dev_dependencies]
+scripts = { name = "pesde/scripts_rojo", version = "^0.2.0", target = "lune" }
+rojo = { name = "pesde/rojo", version = "^7.5.1", target = "lune" }
+
+[engines]
+pesde = "^0.7.0"
+lune = "^0.10.2"

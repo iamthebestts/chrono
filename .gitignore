@@ -1,0 +1,40 @@
+# Package manager lockfiles
+wally.lock
+pesde.lock
+
+# Dependencies
+DevPackages/
+.pesde/
+.wally/
+luau_packages/
+lune_packages/
+
+# Build artifacts and compiled output
+*.tar.gz
+globalTypes.d.luau
+sourcemap.json
+analysis-settings.json
+
+# Roblox place files
+*.rbxm
+*.rbxmx
+*.rbxl
+*.rbxlx
+*.rbxp
+
+# OS and logging
+*.log
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Internal documentation and tools
+docs/internal/
+.tools

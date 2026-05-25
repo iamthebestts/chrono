@@ -1,0 +1,22 @@
+{
+  "run": "${configFolder}/test.lua",
+  "load": {
+    "place": "${configFolder}/../default.rbxp",
+    "asRobloxScript": true
+  },
+  "lua": {
+    "globals": [
+      "__DEV__=true"
+    ]
+  },
+  "fastFlags": {
+    "overrides": [
+      "EnableLoadModule=true"
+    ]
+  },
+  "testService": {
+    "errorExitCode": 201
+  },
+  "headlessRenderer": true,
+  "virtualInput": true
+}

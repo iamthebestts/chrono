@@ -1,0 +1,2 @@
+wally install
+pesde install

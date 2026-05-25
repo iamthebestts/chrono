@@ -1,0 +1,8 @@
+[tools]
+luau-lsp = "JohnnyMorganz/luau-lsp@1.53.3"
+lute = "luau-lang/lute@0.1.0-nightly.20260408"
+rocale-cli = "Roblox/rocale-cli@0.1.2"
+rojo = "rojo-rbx/rojo@7.5.1"
+selene = "Kampfkarren/selene@0.29.0"
+stylua = "JohnnyMorganz/StyLua@2.0.1"
+wally = "UpliftGames/wally@0.3.2"

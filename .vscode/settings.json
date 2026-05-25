@@ -1,0 +1,39 @@
+{
+  // Luau LSP
+  "luau-lsp.platform.type": "roblox",
+  "luau-lsp.sourcemap.enabled": true,
+  "luau-lsp.sourcemap.autogenerate": true,
+  "luau-lsp.sourcemap.rojoProjectFile": "test.project.json",
+  "luau-lsp.completion.imports.enabled": true,
+  // Formatting
+  "[luau]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua",
+    "editor.formatOnSave": true
+  },
+  // File nesting
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "default.project.json": "test.project.json, *.project.json, *.rbxp, *.rbxl, *.rbxlx, sourcemap.json",
+    "wally.toml": "wally.lock, .wally",
+    "pesde.toml": "pesde.lock, .pesde",
+    "aftman.toml": ".aftman, selene.toml, stylua.toml",
+    ".luaurc": ".styluaignore, .stylua.toml, .editorconfig",
+    ".gitignore": ".gitattributes, .env, .env.*",
+    "README.md": "CONTRIBUTING.md, CHANGELOG.md, LICENSE"
+  },
+  // Explorer visibility
+  "files.exclude": {
+    "**/DevPackages": true,
+    "**/output.rbxl": true
+  },
+  // Performance
+  "files.watcherExclude": {
+    "**/DevPackages/**": true,
+    "**/.lute/**": true
+  },
+  "search.exclude": {
+    "**/DevPackages": true,
+    "**/.lute": true
+  }
+}

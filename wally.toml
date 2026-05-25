@@ -1,0 +1,23 @@
+[package]
+name = "iamthebestts/chrono"
+description = "Unified time scheduler for Luau — tasks, intervals, scopes, profiling"
+version = "0.1.0"
+license = "MIT"
+authors = ["iamthebestts"]
+realm = "shared"
+registry = "https://github.com/UpliftGames/wally-index"
+repository = "https://github.com/iamthebestts/chrono"
+
+exclude = [
+    "**/*.test.luau",
+    "__tests__/**",
+    "**/jest.config.lua",
+]
+
+[place]
+shared-packages = "game.ReplicatedStorage.Packages"
+dev-packages = "game.ReplicatedStorage.DevPackages"
+
+[dev-dependencies]
+Jest = "jsdotlua/jest@3.10.0"
+JestGlobals = "jsdotlua/jest-globals@3.10.0"

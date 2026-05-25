@@ -1,0 +1,12 @@
+std = "roblox"
+exclude = [
+  "DevPackages/*",
+  "scripts/*",
+  ".pesde/*",
+  ".lute/*",
+  "luau_packages/*",
+  "lune_packages/*",
+]
+
+[config]
+global_usage = { ignore_pattern = "^__DEV__" }

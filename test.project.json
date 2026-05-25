@@ -1,0 +1,22 @@
+{
+  "name": "ChronoTest",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Packages": {
+        "$className": "Folder",
+        "chrono": {
+          "$path": "src"
+        },
+        "Dev": {
+          "$path": "DevPackages"
+        }
+      }
+    },
+    "ServerScriptService": {
+      "$properties": {
+        "LoadStringEnabled": true
+      }
+    }
+  }
+}
