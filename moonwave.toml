@@ -1,0 +1,11 @@
+title = "chrono"
+gitRepoUrl = "https://github.com/iamthebestts/chrono"
+description = "A scope-based task scheduler for Roblox."
+
+[docusaurus]
+onBrokenLinks = "warn"
+onBrokenMarkdownLinks = "warn"
+
+[[classOrder]]
+section = "API"
+classes = ["Chrono", "Scope", "Handle"]
