@@ -71,3 +71,24 @@ jobs:
           ROBLOX_UNIVERSE_ID: ${{ secrets.ROBLOX_UNIVERSE_ID }}
           ROBLOX_API_KEY: ${{ secrets.ROBLOX_API_KEY }}
         run: lute tests
+
+  docs:
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Moonwave
+        run: npm install -g moonwave
+
+      - name: Publish docs
+        run: moonwave build --publish
