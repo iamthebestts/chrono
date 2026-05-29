@@ -1,94 +1,66 @@
 name: ci
 
 on:
-  pull_request_target:
-    branches:
-      - main
-  push:
-    branches:
-      - main
+    pull_request:
+        branches: [main]
+    push:
+        branches: [main]
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: true
 
 jobs:
-  ci:
-    environment: ${{ github.event_name == 'pull_request_target' && 'integration' ||
-      'trunk' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+    ci:
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Cache aftman tools
-        uses: actions/cache@v4
-        with:
-          path: ~/.aftman
-          key: aftman-${{ hashFiles('aftman.toml') }}
+            - name: Cache aftman tools
+              uses: actions/cache@v4
+              with:
+                  path: ~/.aftman
+                  key: aftman-${{ hashFiles('aftman.toml') }}
 
-      - name: Install aftman
-        uses: ok-nick/setup-aftman@v0.4.2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+            - name: Install aftman
+              uses: ok-nick/setup-aftman@v0.4.2
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Tool check
-        run: aftman --version
+            - run: aftman --version
+            - run: wally install
+            - run: stylua --check src
+            - run: selene src
+            - run: rojo sourcemap test.project.json --output sourcemap.json
+            - name: Download Roblox type definitions
+              run: curl -sSfL -o globalTypes.d.luau https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/scripts/globalTypes.d.luau
+            - name: Type check
+              run: luau-lsp analyze --sourcemap=sourcemap.json --definitions=globalTypes.d.luau --base-luaurc=.luaurc --ignore="**/DevPackages/**" src
+            - run: lute build
+            - run: lute analyze
+            - name: Tests
+              env:
+                  ROBLOX_PLACE_ID: ${{ secrets.ROBLOX_PLACE_ID }}
+                  ROBLOX_UNIVERSE_ID: ${{ secrets.ROBLOX_UNIVERSE_ID }}
+                  ROBLOX_API_KEY: ${{ secrets.ROBLOX_API_KEY }}
+              run: lute tests
 
-      - name: Install dependencies
-        run: wally install
-
-      - name: Format check (stylua)
-        run: stylua --check src
-
-      - name: Lint (selene)
-        run: selene src
-
-      - name: Generate sourcemap
-        run: rojo sourcemap test.project.json --output sourcemap.json
-
-      - name: Download Roblox type definitions
-        run: curl -sSfL -o globalTypes.d.luau
-          https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/scripts/globalTypes.d.luau
-
-      - name: Type check (luau-lsp)
-        run: luau-lsp analyze --sourcemap=sourcemap.json
-          --definitions=globalTypes.d.luau --base-luaurc=.luaurc
-          --ignore="**/DevPackages/**" src
-
-      - name: Build
-        run: lute build
-
-      - name: Analyze
-        run: lute analyze
-
-      - name: Tests
-        env:
-          ROBLOX_PLACE_ID: ${{ secrets.ROBLOX_PLACE_ID }}
-          ROBLOX_UNIVERSE_ID: ${{ secrets.ROBLOX_UNIVERSE_ID }}
-          ROBLOX_API_KEY: ${{ secrets.ROBLOX_API_KEY }}
-        run: lute tests
-
-  docs:
-    needs: ci
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install Moonwave
-        run: npm install -g moonwave
-
-      - name: Publish docs
-        run: moonwave build --publish
+    docs:
+        needs: ci
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+            - run: npm install -g moonwave
+            - name: Publish docs
+              run: |
+                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                  git config --global user.name "github-actions[bot]"
+                  git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+                  moonwave build --publish
