@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-05-29
+
+### Added
+
+- **`fireImmediately` config field** — `scope:every(interval, fn, { fireImmediately = false })` skips the first-frame execution. Defaults to `true` (existing behavior unchanged).
+- **`Types` module** — `HandleConfig`, `ScopeConfig`, `Scope`, `Handle`, and `ProfileEntry` are now exported from a dedicated `Types` module for external consumers.
+
+### Changed
+
+- **`setTimeScale` negative guard** — passing a negative scale now clamps to `0` and emits a `warn()` instead of silently producing undefined behavior.
+
 ## [0.1.0] - 2026-05-28
 
 ### Added
@@ -27,4 +38,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Nested task safety** — tasks created during callback execution are deferred to the next frame.
 - **Self-cancellation** — a task can safely cancel itself or destroy its parent scope mid-callback.
 
+[0.1.1]: https://github.com/iamthebestts/chrono/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/iamthebestts/chrono/releases/tag/v0.1.0

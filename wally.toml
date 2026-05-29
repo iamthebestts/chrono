@@ -1,7 +1,7 @@
 [package]
 name = "iamthebestts/chrono"
 description = "Unified time scheduler for Luau — tasks, intervals, scopes, profiling"
-version = "0.1.0"
+version = "0.1.1"
 license = "MIT"
 authors = ["iamthebestts"]
 realm = "shared"

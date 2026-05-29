@@ -1,6 +1,7 @@
 --!strict
+local Types = require(script.Parent.Types)
 
-local RunService: any = nil
+local RunService: RunService
 
 -- Constants
 
@@ -96,7 +97,7 @@ local function computeP99(entry: ProfileSamplesData): number
 	if n == 0 then
 		return 0
 	end
-	local valid = table.create(n)
+	local valid = table.create(n) :: { number }
 	for i = 1, n do
 		valid[i] = entry.samples[i]
 	end
@@ -345,7 +346,7 @@ local function createHandle(
 	scopeData: ScopeData,
 	handleType: HandleType,
 	fn: (...any) -> ...any,
-	config: { name: string?, maxCatchup: number? }?,
+	config: Types.HandleConfig?,
 	interval: number
 ): HandleInternal
 	nextCreationOrder += 1
@@ -360,12 +361,13 @@ local function createHandle(
 		_interval = interval,
 		_accumulated = 0,
 		_creationOrder = nextCreationOrder,
-		_firstRun = handleType == "every",
+		_firstRun = handleType == "every"
+			and (if config and config.fireImmediately ~= nil then config.fireImmediately else true),
 		_maxCatchup = if config and config.maxCatchup then config.maxCatchup else math.huge,
 	}
 
 	local handle = setmetatable({ _data = data }, HandleMeta) :: any
-	table.freeze(handle)
+	table.freeze(handle :: {})
 
 	local targetList: { HandleInternal }
 	if handleType == "tick" then
@@ -388,14 +390,14 @@ end
 
 	@param delay number -- Delay in seconds. Values ≤ 0 execute on the next frame.
 	@param fn () -> () -- The function to execute.
-	@param config {name: string?}? -- Optional configuration table.
+	@param config {name: string?, maxCatchup: number?, fireImmediately: boolean?}? -- Optional configuration. `name` labels this task in the profiler.
 	@return Handle
 ]=]
 function ScopeMethods.after(
 	self: ScopeInternal,
 	delay: number,
 	fn: () -> (),
-	config: { name: string?, maxCatchup: number? }?
+	config: Types.HandleConfig?
 ): HandleInternal
 	assertScopeAlive(self._data)
 	if delay < 0 then
@@ -407,19 +409,20 @@ end
 --[=[
 	@within Scope
 
-	Schedules a function to execute immediately and then repeatedly every `interval`
-	seconds. Respects the Scope's `timeScale`.
+	Schedules a function to execute repeatedly every `interval` seconds. By default,
+	fires immediately on registration, then repeats. Set `fireImmediately = false` in
+	the config to skip the first execution. Respects the Scope's `timeScale`.
 
 	@param interval number -- Time between executions in seconds.
 	@param fn () -> () -- The function to execute.
-	@param config {name: string?}? -- Optional configuration table.
+	@param config {name: string?, maxCatchup: number?, fireImmediately: boolean?}? -- Optional configuration. `fireImmediately` controls whether the task fires on registration (default: `true`).
 	@return Handle
 ]=]
 function ScopeMethods.every(
 	self: ScopeInternal,
 	interval: number,
 	fn: () -> (),
-	config: { name: string?, maxCatchup: number? }?
+	config: Types.HandleConfig?
 ): HandleInternal
 	assertScopeAlive(self._data)
 	return createHandle(self._data, "every", fn :: any, config, interval)
@@ -435,14 +438,10 @@ end
 	Tasks run in order of creation, after all `tick` tasks for the frame.
 
 	@param fn (dt: number) -> () -- Called each frame. `dt` is the frame delta in seconds, or `0` when the Scope is paused.
-	@param config {name: string?}? -- Optional configuration table.
+	@param config {name: string?, maxCatchup: number?, fireImmediately: boolean?}? -- Optional configuration. `name` labels this task in the profiler.
 	@return Handle
 ]=]
-function ScopeMethods.frame(
-	self: ScopeInternal,
-	fn: (dt: number) -> (),
-	config: { name: string?, maxCatchup: number? }?
-): HandleInternal
+function ScopeMethods.frame(self: ScopeInternal, fn: (dt: number) -> (), config: Types.HandleConfig?): HandleInternal
 	assertScopeAlive(self._data)
 	return createHandle(self._data, "frame", fn :: any, config, 0)
 end
@@ -458,14 +457,14 @@ end
 
 	@param hz number -- Target executions per second (e.g. `60` for 60 hz).
 	@param fn (dt: number) -> () -- Called with a fixed delta of `1/hz` on each tick.
-	@param config {name: string?, maxCatchup: number?}? -- Optional configuration. `maxCatchup` caps how many times the task can fire in a single frame, preventing hitches after freezes (default: unlimited).
+	@param config {name: string?, maxCatchup: number?, fireImmediately: boolean?}? -- Optional configuration. `maxCatchup` caps how many times the task can fire in a single frame, preventing hitches after freezes (default: unlimited).
 	@return Handle
 ]=]
 function ScopeMethods.tick(
 	self: ScopeInternal,
 	hz: number,
 	fn: (dt: number) -> (),
-	config: { name: string?, maxCatchup: number? }?
+	config: Types.HandleConfig?
 ): HandleInternal
 	assertScopeAlive(self._data)
 	return createHandle(self._data, "tick", fn :: any, config, 1 / hz)
@@ -510,10 +509,14 @@ end
 	| `2.0`   | Double speed — fast-forward |
 	| `0`     | Freezes time (distinct from `pause()`) |
 
-	@param scale number -- Time multiplier. Negative values have undefined behavior.
+	@param scale number -- Time multiplier. Negative values are clamped to `0` (a warning is emitted).
 ]=]
 function ScopeMethods.setTimeScale(self: ScopeInternal, scale: number)
 	assertScopeAlive(self._data)
+	if scale < 0 then
+		warn(`[chrono] setTimeScale received a negative value ({scale}); clamping to 0`)
+		scale = 0
+	end
 	self._data._timeScale = scale
 end
 
@@ -771,7 +774,7 @@ end
 	@param config {timeScale: number?, onError: ((err: string, name: string) -> ())?}? -- Optional configuration. `timeScale` sets the initial time multiplier (default: `1.0`). `onError` is called when a task callback throws, receiving the error message and the task name.
 	@return Scope
 ]=]
-local function createScope(config: { timeScale: number?, onError: ((err: string, name: string) -> ())? }?): any
+local function createScope(config: Types.ScopeConfig?): Types.Scope
 	ensureConnection()
 
 	local data: ScopeData = {
@@ -790,10 +793,10 @@ local function createScope(config: { timeScale: number?, onError: ((err: string,
 	}
 
 	local scope = setmetatable({ _data = data }, ScopeMeta) :: any
-	table.freeze(scope)
+	table.freeze(scope :: {})
 	table.insert(allScopes, scope)
 
-	return scope
+	return scope :: Types.Scope
 end
 
 --[=[

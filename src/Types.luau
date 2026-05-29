@@ -1,12 +1,8 @@
 --!strict
 
-export type ScopeConfig = {
-	timeScale: number?,
-}
+export type ScopeConfig = { timeScale: number?, onError: ((err: string, name: string) -> ())? }
 
-export type HandleConfig = {
-	name: string?,
-}
+export type HandleConfig = { name: string?, maxCatchup: number?, fireImmediately: boolean? }
 
 export type Handle = {
 	cancel: (self: Handle) -> (),

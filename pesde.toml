@@ -1,5 +1,5 @@
 name = "iamthebestts/chrono"
-version = "0.1.0"
+version = "0.1.1"
 description = "Unified time scheduler for Luau — tasks, intervals, scopes, profiling"
 authors = ["iamthebestts"]
 repository = "https://github.com/iamthebestts/chrono"

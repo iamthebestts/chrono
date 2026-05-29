@@ -19,8 +19,8 @@ One API for delays, intervals, fixed-rate ticks, and per-frame callbacks — wit
 <br/>
 
 [Documentation](https://iamthebestts.github.io/chrono) ·
-[API Reference](https://iamthebestts.github.io/chrono) ·
-[Changelog](CHANGELOG.md)
+[API Reference](https://iamthebestts.github.io/chrono/api/Chrono) ·
+[Changelog](https://iamthebestts.github.io/chrono/changelog)
 
 </div>
 
@@ -58,7 +58,7 @@ scope:destroy()
 | Feature | Description |
 |---|---|
 | **Scoped lifecycle** | All tasks belong to a scope. Destroy the scope and every task inside is cancelled instantly. |
-| **`after` / `every`** | One-shot delays and repeating intervals with automatic first-run for `every`. |
+| **`after` / `every`** | One-shot delays and repeating intervals. `every` fires immediately by default (`fireImmediately = false` to skip). |
 | **`frame`** | Per-frame callbacks via `RunService.Heartbeat` with wall-clock `dt`. |
 | **`tick`** | Fixed-rate simulation loop (e.g. 60 Hz physics) — fires multiple times per frame to catch up. |
 | **Pause & resume** | Scope-level and handle-level pause. `frame` still fires with `dt = 0` while scope is paused. |
@@ -164,12 +164,12 @@ scope:destroy()
 | Method | Description |
 |---|---|
 | `scope:after(delay, fn, config?)` | Schedule `fn` once after `delay` seconds. Returns a `Handle`. |
-| `scope:every(interval, fn, config?)` | Schedule `fn` immediately, then every `interval` seconds. Returns a `Handle`. |
+| `scope:every(interval, fn, config?)` | Schedule `fn` every `interval` seconds. Fires immediately by default (`fireImmediately = false` to skip). Returns a `Handle`. |
 | `scope:frame(fn, config?)` | Schedule `fn` every frame with `dt`. Returns a `Handle`. |
 | `scope:tick(hz, fn, config?)` | Schedule `fn` at fixed `hz` rate. Config accepts `maxCatchup`. Returns a `Handle`. |
 | `scope:pause()` | Freeze all tasks. `frame` still fires with `dt = 0`. |
 | `scope:resume()` | Unfreeze all tasks. No backlog. |
-| `scope:setTimeScale(scale)` | Multiply time for `after`/`every`/`tick`. Does **not** affect `frame`. |
+| `scope:setTimeScale(scale)` | Multiply time for `after`/`every`/`tick`. Negative values are clamped to `0`. Does **not** affect `frame`. |
 | `scope:destroy()` | Permanently cancel all tasks. Trove-compatible via `Destroy()`. |
 
 | Property | Type | Description |
@@ -203,6 +203,7 @@ scope:tick(60, fn, { name = "physics", maxCatchup = 4 })
 |---|---|---|
 | `name` | all | Label for the profiler. Default: `"<anonymous>"`. |
 | `maxCatchup` | `tick` | Max fires per frame during catch-up. Default: unlimited. |
+| `fireImmediately` | `every` | Fire once on registration before the first interval. Default: `true`. |
 
 ---
 
