@@ -10,13 +10,13 @@ One API for delays, intervals, fixed-rate ticks, and per-frame callbacks — wit
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![CI](https://github.com/iamthebestts/chrono/actions/workflows/ci.yml/badge.svg)](https://github.com/iamthebestts/chrono/actions/workflows/ci.yml)
 
-<br>
+<br/>
 
 [<img src=".github/assets/link-wally.svg" height="32" alt="Install with Wally" />](https://wally.run/package/iamthebestts/chrono)
 &nbsp;&nbsp;
 [<img src=".github/assets/link-creator-store.svg" height="32" alt="Get on Creator Store" />](https://create.roblox.com/store)
 
-<br>
+<br/>
 
 [Documentation](https://iamthebestts.github.io/chrono) ·
 [API Reference](https://iamthebestts.github.io/chrono) ·
