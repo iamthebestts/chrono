@@ -12,6 +12,7 @@ concurrency:
 
 jobs:
     ci:
+        environment: ${{ github.event_name == 'pull_request' && 'integration' || 'trunk' }}
         runs-on: ubuntu-latest
         timeout-minutes: 15
         steps:
