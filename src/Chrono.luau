@@ -2,11 +2,11 @@
 
 local RunService: any = nil
 
----! Constants
+-- Constants
 
 local PROFILER_BUFFER_SIZE = 128
 
----! Internal types
+-- Internal types
 
 type HandleType = "after" | "every" | "frame" | "tick"
 
@@ -52,7 +52,7 @@ type ProfileSamplesData = {
 	_size: number,
 }
 
----! Module state
+-- Module state
 
 local allScopes: { ScopeInternal } = {}
 local profilerData: { [string]: ProfileSamplesData } = {}
@@ -60,7 +60,7 @@ local nextCreationOrder = 0
 local heartbeatConnection: RBXScriptConnection? = nil
 local manualMode = false
 
----! Profiler helpers
+-- Profiler helpers
 
 local function recordSample(name: string, durationMs: number)
 	local entry = profilerData[name]
@@ -105,7 +105,7 @@ local function computeP99(entry: ProfileSamplesData): number
 	return valid[idx]
 end
 
----! Callback invocation with error isolation
+-- Callback invocation with error isolation
 
 local function invokeCallback(hData: HandleData, ...: any)
 	local startTime = os.clock()
@@ -120,7 +120,7 @@ local function invokeCallback(hData: HandleData, ...: any)
 	end
 end
 
----! Handle
+-- Handle
 
 --[=[
 	@class Handle
@@ -258,7 +258,7 @@ function HandleMethods.isCancelled(self: HandleInternal): boolean
 	return data._isCancelled
 end
 
----! Scope
+-- Scope
 
 --[=[
 	@class Scope
@@ -562,7 +562,7 @@ end
 
 ScopeMethods.Destroy = ScopeMethods.destroy
 
----! Cleanup helper
+-- Cleanup helper
 
 local function filterCancelledInPlace(handles: { HandleInternal })
 	local write = 1
@@ -577,7 +577,7 @@ local function filterCancelledInPlace(handles: { HandleInternal })
 	end
 end
 
----! Core step
+-- Core step
 
 local function step(dt: number)
 	local scopeSnapshot = table.clone(allScopes)
@@ -719,7 +719,7 @@ local function step(dt: number)
 	end
 end
 
----! Connection management
+-- Connection management
 
 local function ensureConnection()
 	if heartbeatConnection or manualMode then
@@ -731,7 +731,7 @@ local function ensureConnection()
 	heartbeatConnection = RunService.Heartbeat:Connect(step)
 end
 
----! Public API
+-- Public API
 
 --[=[
 	@class Chrono
@@ -842,7 +842,7 @@ local function resetProfiler()
 	table.clear(profilerData)
 end
 
----! Module-level pause/resume
+-- Module-level pause/resume
 
 --[=[
 	@within Chrono
@@ -876,7 +876,7 @@ local function resumeAll()
 	end
 end
 
----! Testing internals
+-- Testing internals
 
 local function _setManualMode(enabled: boolean)
 	manualMode = enabled
@@ -901,7 +901,7 @@ local function _reset()
 	end
 end
 
----! Module
+-- Module
 
 return {
 	scope = createScope,

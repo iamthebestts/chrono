@@ -10,14 +10,14 @@ local beforeEach = JestGlobals.beforeEach
 
 local chrono = require(script.Parent.Parent) :: any
 
----! Setup
+-- Setup
 
 beforeEach(function()
 	chrono._reset()
 	chrono._setManualMode(true)
 end)
 
----! chrono.scope
+-- chrono.scope
 
 describe("chrono.scope", function()
 	it("creates a scope with default values", function()
@@ -42,7 +42,7 @@ describe("chrono.scope", function()
 	end)
 end)
 
----! scope:after
+-- scope:after
 
 describe("scope:after", function()
 	it("fires callback after delay", function()
@@ -142,7 +142,7 @@ describe("scope:after", function()
 	end)
 end)
 
----! scope:every
+-- scope:every
 
 describe("scope:every", function()
 	it("fires immediately on first step", function()
@@ -229,7 +229,7 @@ describe("scope:every", function()
 	end)
 end)
 
----! scope:frame
+-- scope:frame
 
 describe("scope:frame", function()
 	it("fires every step with dt", function()
@@ -306,7 +306,7 @@ describe("scope:frame", function()
 	end)
 end)
 
----! scope:tick
+-- scope:tick
 
 describe("scope:tick", function()
 	it("fires at fixed frequency", function()
@@ -404,7 +404,7 @@ describe("scope:tick", function()
 	end)
 end)
 
----! scope:pause / resume
+-- scope:pause / resume
 
 describe("scope:pause / resume", function()
 	it("pause freezes all timers", function()
@@ -471,7 +471,7 @@ describe("scope:pause / resume", function()
 	end)
 end)
 
----! scope:setTimeScale
+-- scope:setTimeScale
 
 describe("scope:setTimeScale", function()
 	it("multiplies time advancement", function()
@@ -538,7 +538,7 @@ describe("scope:setTimeScale", function()
 	end)
 end)
 
----! scope:destroy
+-- scope:destroy
 
 describe("scope:destroy", function()
 	it("marks scope as destroyed", function()
@@ -608,7 +608,7 @@ describe("scope:destroy", function()
 	end)
 end)
 
----! handle:cancel
+-- handle:cancel
 
 describe("handle:cancel", function()
 	it("prevents task from running", function()
@@ -648,7 +648,7 @@ describe("handle:cancel", function()
 	end)
 end)
 
----! handle:pause / resume
+-- handle:pause / resume
 
 describe("handle:pause / resume", function()
 	it("pausing handle prevents execution", function()
@@ -715,7 +715,7 @@ describe("handle:pause / resume", function()
 	end)
 end)
 
----! handle:setInterval
+-- handle:setInterval
 
 describe("handle:setInterval", function()
 	it("changes every interval", function()
@@ -767,7 +767,7 @@ describe("handle:setInterval", function()
 	end)
 end)
 
----! handle:isPaused / isCancelled
+-- handle:isPaused / isCancelled
 
 describe("handle:isPaused / isCancelled", function()
 	it("isPaused returns correct state", function()
@@ -806,7 +806,7 @@ describe("handle:isPaused / isCancelled", function()
 	end)
 end)
 
----! Edge cases
+-- Edge cases
 
 describe("edge cases", function()
 	it("nested task creation does not fire in same frame", function()
@@ -874,7 +874,7 @@ describe("edge cases", function()
 	end)
 end)
 
----! Profiler
+-- Profiler
 
 describe("chrono.profile", function()
 	it("records task execution stats", function()
@@ -948,7 +948,7 @@ describe("chrono.profile", function()
 	end)
 end)
 
----! Error isolation
+-- Error isolation
 
 describe("error isolation", function()
 	it("callback error does not stop other tasks in same scope", function()
@@ -1046,7 +1046,7 @@ describe("error isolation", function()
 	end)
 end)
 
----! maxCatchup
+-- maxCatchup
 
 describe("maxCatchup", function()
 	it("limits tick fires per frame", function()
@@ -1103,7 +1103,7 @@ describe("maxCatchup", function()
 	end)
 end)
 
----! pause_all / resume_all
+-- pause_all / resume_all
 
 describe("chrono.pause_all / resume_all", function()
 	it("pauses all active scopes", function()

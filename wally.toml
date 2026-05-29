@@ -7,11 +7,21 @@ authors = ["iamthebestts"]
 realm = "shared"
 registry = "https://github.com/UpliftGames/wally-index"
 repository = "https://github.com/iamthebestts/chrono"
+homepage = "https://iamthebestts.github.io/chrono"
+
+include = [
+    "src/**/*.luau",
+    "default.project.json",
+    "wally.toml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+]
 
 exclude = [
     "**/*.test.luau",
     "__tests__/**",
-    "**/jest.config.lua",
+    "**/jest.config.*",
 ]
 
 [place]

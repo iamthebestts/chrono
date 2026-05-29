@@ -35,6 +35,9 @@ Thumbs.db
 # Claude Code local settings
 .claude/settings.local.json
 
+# Reference backup (not for distribution)
+backup/
+
 # Internal documentation and tools
 docs/internal/
 .tools

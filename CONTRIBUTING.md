@@ -8,9 +8,9 @@
 
 ```powershell
 aftman install                # install toolchain pinned in aftman.toml
-.\scripts\install.ps1         # wally install + type generation
-.\scripts\install-hooks.ps1   # install pre-commit hooks
+.\scripts\install.ps1         # wally install + pesde install
 .\scripts\build.ps1           # verify it builds
+.\scripts\analyze.ps1         # verify type checks pass
 .\scripts\tests.ps1           # verify tests pass
 ```
 
@@ -22,14 +22,15 @@ If all succeed, you're ready to start.
 
 All tooling is pinned via [Aftman](https://github.com/LPGhatguy/aftman). Running `aftman install` provisions the exact versions declared in `aftman.toml`:
 
-| Tool       | Version                  | Purpose                       |
-|------------|--------------------------|-------------------------------|
-| `lute`     | `0.1.0-nightly.20260408` | Build, analyze, and run tests |
-| `rojo`     | `7.5.1`                  | Roblox project sync           |
-| `wally`    | `0.3.2`                  | Package manager               |
-| `selene`   | `0.29.0`                 | Luau linter                   |
-| `stylua`   | `2.0.1`                  | Luau formatter                |
-| `luau-lsp` | `1.53.3`                 | Language server for VS Code   |
+| Tool         | Version                      | Purpose                       |
+|--------------|------------------------------|-------------------------------|
+| `lute`       | `1.0.1-nightly.20260523`     | Build, analyze, and run tests |
+| `rocale-cli` | `0.1.2`                      | Run tests via Roblox Open Cloud |
+| `rojo`       | `7.5.1`                      | Roblox project sync           |
+| `wally`      | `0.3.2`                      | Package manager (Wally)       |
+| `selene`     | `0.29.0`                     | Luau linter                   |
+| `stylua`     | `2.0.1`                      | Luau formatter                |
+| `luau-lsp`   | `1.53.3`                     | Language server for VS Code   |
 
 Do not install these tools globally outside Aftman — version drift between contributors will produce noisy diffs and inconsistent CI behaviour.
 
@@ -43,13 +44,13 @@ Do not install these tools globally outside Aftman — version drift between con
 aftman install
 ```
 
-### 2. Install Wally dependencies
+### 2. Install dependencies
 
 ```powershell
 .\scripts\install.ps1
 ```
 
-This wraps `wally install` and generates package types so `luau-lsp` resolves them.
+This wraps `wally install` and `pesde install`.
 
 ### 3. Create `.env`
 
@@ -61,7 +62,7 @@ ROBLOX_PLACE_ID=your_place_id
 ROBLOX_UNIVERSE_ID=your_universe_id
 ```
 
-These are required because `lute tests` round-trips through Roblox Open Cloud to execute the test place.
+These are required because `lute tests` round-trips through Roblox Open Cloud (via `rocale-cli`) to execute the test place.
 
 ### 4. Open in VS Code
 
@@ -73,12 +74,13 @@ These are required because `lute tests` round-trips through Roblox Open Cloud to
 
 All day-to-day tasks have a PowerShell wrapper in `scripts/`. **Use these instead of calling the underlying tools directly** — they handle `.env` loading and path normalization for you.
 
-| Script                | What it runs                              |
-|-----------------------|-------------------------------------------|
-| `scripts/install.ps1` | `wally install`                           |
-| `scripts/build.ps1`   | Loads `.env`, then `lute build`           |
-| `scripts/analyze.ps1` | `lute analyze`                            |
-| `scripts/tests.ps1`   | Loads `.env`, then `lute tests`           |
+| Script                 | What it runs                              |
+|------------------------|-------------------------------------------|
+| `scripts/install.ps1`  | `wally install` + `pesde install`         |
+| `scripts/build.ps1`    | Loads `.env`, then `lute build`           |
+| `scripts/analyze.ps1`  | `lute analyze` (selene + stylua + luau-lsp) |
+| `scripts/tests.ps1`    | Loads `.env`, then `lute tests`           |
+| `scripts/publish.ps1`  | Runs analyze + build, then `wally publish` + `pesde publish` |
 
 ---
 
@@ -87,14 +89,17 @@ All day-to-day tasks have a PowerShell wrapper in `scripts/`. **Use these instea
 ```txt
 chrono/
 ├── src/
-│   ├── init.luau          ← library entry point
+│   ├── init.luau          ← library entry point (re-exports Chrono)
+│   ├── Chrono.luau        ← core implementation
+│   ├── Types.luau         ← public type definitions
 │   ├── jest.config.lua    ← Jest configuration
 │   └── __tests__/         ← all test files (*.test.luau)
 ├── scripts/
-│   ├── install.ps1        ← wally install
+│   ├── install.ps1        ← wally + pesde install
 │   ├── build.ps1          ← lute build (loads .env)
 │   ├── analyze.ps1        ← lute analyze
 │   ├── tests.ps1          ← lute tests (loads .env)
+│   ├── publish.ps1        ← publish to Wally + pesde
 │   ├── processExecution.luau
 │   ├── test.lua
 │   └── tests.json
@@ -108,33 +113,11 @@ chrono/
 ├── default.project.json   ← Rojo project for the library
 ├── test.project.json      ← Rojo project for running tests
 ├── aftman.toml            ← toolchain declarations
-├── wally.toml             ← package manifest
+├── wally.toml             ← Wally package manifest
+├── pesde.toml             ← pesde package manifest
 ├── selene.toml            ← linter config
 ├── stylua.toml            ← formatter config
 └── .luaurc                ← Luau language config (aliases, strict mode)
-```
-
----
-
-## Git hooks
-
-Pre-commit hooks are installed via `.\scripts\install-hooks.ps1`. They run automatically before each commit and validate:
-
-- **stylua** — code formatting
-- **selene** — linting rules
-- **luau-lsp** — type safety
-
-If any check fails, the commit is blocked. Fix the issues and try again:
-
-```powershell
-stylua src/    # auto-format code
-selene src     # check lint rules
-```
-
-To bypass hooks temporarily (not recommended):
-
-```bash
-git commit --no-verify
 ```
 
 ---
@@ -145,13 +128,13 @@ All Luau files **must** begin with `--!strict`. No exceptions.
 
 **Naming conventions:**
 
-- `PascalCase` — types and interfaces
+- `PascalCase` — types, interfaces, and metatables
 - `camelCase` — variables, functions, and module fields
 - `SCREAMING_SNAKE_CASE` — module-level constants
 
 **Rules:**
 
-- Never use `any` — all types must be explicit
+- Avoid `any` types — use explicit types wherever possible. `:: any` casts are acceptable at metatable boundaries where the type checker cannot infer correctly.
 - No `print()` in production code (anywhere in `src/` outside `__tests__/`)
 - Modules must return a table or a single typed value — no side effects at `require` time
 
@@ -172,33 +155,49 @@ Both run in CI and will block your PR if they fail.
 .\scripts\tests.ps1
 ```
 
-This loads your `.env` and runs `lute tests`. Tests live in `src/__tests__/` and follow the `*.test.luau` naming convention, using the Jest-style API (`describe`, `it`/`test`, `expect`).
+This loads your `.env` and runs `lute tests`. Tests live in `src/__tests__/` and follow the `*.test.luau` naming convention, using the Jest-style API (`describe`, `it`, `expect`, `beforeEach`).
 
 **Writing tests:**
 
 ```luau
 --!strict
-local chrono = require(script.Parent.Parent) -- path from src/__tests__/
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local JestGlobals = require(ReplicatedStorage.Packages.Dev.JestGlobals)
 
-return function()
-    describe("chrono.after", function()
-        it("invokes the callback once after the given delay", function()
-            local fired = 0
-            chrono.after(0.05, function()
-                fired += 1
-            end)
+local describe = JestGlobals.describe
+local it = JestGlobals.it
+local expect = JestGlobals.expect
+local beforeEach = JestGlobals.beforeEach
 
-            task.wait(0.1)
-            expect(fired).toBe(1)
+local chrono = require(script.Parent.Parent) :: any
+
+beforeEach(function()
+    chrono._reset()
+    chrono._setManualMode(true)
+end)
+
+describe("scope:after", function()
+    it("fires callback after delay", function()
+        local scope = chrono.scope()
+        local fired = false
+        scope:after(1, function()
+            fired = true
         end)
+
+        chrono._step(0.5)
+        expect(fired).toBe(false)
+
+        chrono._step(0.6)
+        expect(fired).toBe(true)
     end)
-end
+end)
 ```
 
 **Test conventions:**
 
 - One `describe` block per module or public function
 - Each `it` block covers exactly one behaviour
+- Use `chrono._setManualMode(true)` and `chrono._step(dt)` for deterministic time control
 - Any new public API must ship with tests in the same PR
 
 ---
@@ -227,6 +226,18 @@ chore: bump stylua to 2.0.1
 ```
 
 Do **not** use scopes (e.g. `feat(core):`) — unnecessary at this project's size.
+
+---
+
+## Publishing
+
+Publishing is handled by `scripts/publish.ps1`. It runs analyze and build checks before pushing to both registries:
+
+```powershell
+.\scripts\publish.ps1
+```
+
+Before publishing, bump the version in **both** `wally.toml` and `pesde.toml`, update `CHANGELOG.md`, and ensure all checks pass locally.
 
 ---
 
