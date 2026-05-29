@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[768],{4410:s=>{s.exports=JSON.parse('{"sourceUrl":"https://github.com/iamthebestts/chrono/blob/master","baseUrl":"/chrono/","classOrder":[{"section":"API","classes":["Chrono","Scope","Handle"]}],"apiCategories":[]}')}}]);

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="plugin-moonwave plugin-id-moonwave" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">Chrono | chrono</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://iamthebestts.github.io/chrono/api/Chrono"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Chrono | chrono"><meta data-rh="true" name="description" content="A scope-based task scheduler for Roblox. Schedule recurring tasks, fixed-rate
+ticks, one-shot delays, and per-frame callbacks — all tied to a `Scope`&#x27;s lifecycle.
+
+All tasks created through a Scope are automatically cleaned up when the Scope
+is destroyed, making chrono safe to use in component-based or OOP architectures
+without manual cleanup bookkeeping.
+
+```lua
+local chrono = require(path.to.chrono)
+
+local scope = chrono.scope()
+
+scope:tick(60, function(dt)
+	player.position += player.velocity * dt
+end)
+
+scope:every(5, function()
+	print(&quot;every 5 seconds&quot;)
+end)
+
+scope:after(10, function()
+	scope:destroy() -- cleans up all tasks at once
+end)
+```"><meta data-rh="true" property="og:description" content="A scope-based task scheduler for Roblox. Schedule recurring tasks, fixed-rate
+ticks, one-shot delays, and per-frame callbacks — all tied to a `Scope`&#x27;s lifecycle.
+
+All tasks created through a Scope are automatically cleaned up when the Scope
+is destroyed, making chrono safe to use in component-based or OOP architectures
+without manual cleanup bookkeeping.
+
+```lua
+local chrono = require(path.to.chrono)
+
+local scope = chrono.scope()
+
+scope:tick(60, function(dt)
+	player.position += player.velocity * dt
+end)
+
+scope:every(5, function()
+	print(&quot;every 5 seconds&quot;)
+end)
+
+scope:after(10, function()
+	scope:destroy() -- cleans up all tasks at once
+end)
+```"><link data-rh="true" rel="canonical" href="https://iamthebestts.github.io/chrono/api/Chrono"><link data-rh="true" rel="alternate" href="https://iamthebestts.github.io/chrono/api/Chrono" hreflang="en"><link data-rh="true" rel="alternate" href="https://iamthebestts.github.io/chrono/api/Chrono" hreflang="x-default"><link rel="stylesheet" href="/chrono/assets/css/styles.b9f2c64d.css">
+<script src="/chrono/assets/js/runtime~main.7e647dec.js" defer="defer"></script>
+<script src="/chrono/assets/js/main.d7f5d513.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();null!==e?t(e):window.matchMedia("(prefers-color-scheme: dark)").matches?t("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,t("light"))}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/chrono/"><b class="navbar__title text--truncate">chrono</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/chrono/api/">API</a><a class="navbar__item navbar__link" href="/chrono/changelog">Changelog</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/iamthebestts/chrono" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input id="search_input_react" type="search" placeholder="Loading..." aria-label="Search" class="navbar__search-input search-bar" disabled=""></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/chrono/api/Chrono">API</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/chrono/api/Chrono">​Chrono</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/chrono/api/Scope">​Scope</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/chrono/api/Handle">​Handle</a></li></ul></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">Chrono</span></h1><div class="luaClassTags_EipM"></div><div>
+<p>
+  A scope-based task scheduler for Roblox. Schedule recurring tasks, fixed-rate
+  ticks, one-shot delays, and per-frame callbacks — all tied to a <code>Scope</code>'s lifecycle.
+</p>
+<p>
+  All tasks created through a Scope are automatically cleaned up when the Scope
+  is destroyed, making chrono safe to use in component-based or OOP architectures
+  without manual cleanup bookkeeping.
+</p>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> chrono <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span>to<span class="token punctuation">.</span>chrono<span class="token punctuation">)</span>
+
+<span class="token keyword">local</span> scope <span class="token operator">=</span> chrono<span class="token punctuation">.</span><span class="token function">scope</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+scope<span class="token punctuation">:</span><span class="token function">tick</span><span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
+	player<span class="token punctuation">.</span>position <span class="token operator">+</span><span class="token operator">=</span> player<span class="token punctuation">.</span>velocity <span class="token operator">*</span> dt
+<span class="token keyword">end</span><span class="token punctuation">)</span>
+
+scope<span class="token punctuation">:</span><span class="token function">every</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"every 5 seconds"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">)</span>
+
+scope<span class="token punctuation">:</span><span class="token function">after</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	scope<span class="token punctuation">:</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">-- cleans up all tasks at once</span>
+<span class="token keyword">end</span><span class="token punctuation">)</span>
+</code></pre>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="createScope"><code style="text-decoration:none">createScope</code><a href="#createScope" class="hash-link" aria-label="Direct link to createScope" title="Direct link to createScope">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L774"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Chrono<!-- -->.</code><code class="green_DgR4">createScope</code><code>(</code><div class="inset_uKQm"><div><code>config<!-- -->: </code><code class="purple_ieR2">{</code><div class="inset_uKQm"><code>timeScale<!-- -->: </code><code class="blue_P4bS">number?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>onError<!-- -->: </code><code class="green_DgR4">(</code><code class="yellow_QJap">(</code><div class="inset_uKQm"><code>err<!-- -->: </code><code class="blue_P4bS">string</code><code class="yellow_QJap">,</code></div><div class="inset_uKQm"><code>name<!-- -->: </code><code class="blue_P4bS">string</code></div><code class="yellow_QJap">)</code><code class="yellow_QJap"> → </code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code></div><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Optional configuration. <code>timeScale</code> sets the initial time multiplier (default: <code>1.0</code>). <code>onError</code> is called when a task callback throws, receiving the error message and the task name.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/chrono/api/Scope">Scope</a></code></div><div>
+<p>
+  Creates a new independent Scope. Each Scope maintains its own pause state,
+  time scale, and elapsed time. Scopes do not interfere with each other.
+</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="profile"><code style="text-decoration:none">profile</code><a href="#profile" class="hash-link" aria-label="Direct link to profile" title="Direct link to profile">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L819"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Chrono<!-- -->.</code><code class="green_DgR4">profile</code><code>(</code><code>) → </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="green_DgR4">{</code><div class="inset_uKQm"><code>name<!-- -->: </code><code class="blue_P4bS">string</code><code class="green_DgR4">,</code></div><div class="inset_uKQm"><code>count<!-- -->: </code><code class="blue_P4bS">number</code><code class="green_DgR4">,</code></div><div class="inset_uKQm"><code>avgMs<!-- -->: </code><code class="blue_P4bS">number</code><code class="green_DgR4">,</code></div><div class="inset_uKQm"><code>maxMs<!-- -->: </code><code class="blue_P4bS">number</code><code class="green_DgR4">,</code></div><div class="inset_uKQm"><code>p99Ms<!-- -->: </code><code class="blue_P4bS">number</code><code class="green_DgR4">,</code></div><div class="inset_uKQm"><code>totalMs<!-- -->: </code><code class="blue_P4bS">number</code></div><code class="green_DgR4">}</code><code class="purple_ieR2">}</code></div><div>
+<p>
+  Returns profiling data for all tasks that have executed at least once since the
+  last <code>reset_profiler()</code> call (or since the module was loaded).
+</p>
+<p>
+  Task names come from the <code>name</code> field in each task's config table. Tasks without
+  a name are grouped under <code>&#x3C;anonymous></code>.
+</p>
+<p>Times are computed over a rolling window of the last 128 samples per task.</p>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> prof <span class="token operator">=</span> chrono<span class="token punctuation">.</span><span class="token function">profile</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> name<span class="token punctuation">,</span> data <span class="token keyword">in</span> <span class="token function">pairs</span><span class="token punctuation">(</span>prof<span class="token punctuation">)</span> <span class="token keyword">do</span>
+	<span class="token function">print</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> <span class="token string">"avg:"</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>avgMs<span class="token punctuation">,</span> <span class="token string">"p99:"</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>p99Ms<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="resetProfiler"><code style="text-decoration:none">resetProfiler</code><a href="#resetProfiler" class="hash-link" aria-label="Direct link to resetProfiler" title="Direct link to resetProfiler">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L841"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Chrono<!-- -->.</code><code class="green_DgR4">resetProfiler</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>Clears all profiler data accumulated since the last reset or module load.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="pauseAll"><code style="text-decoration:none">pauseAll</code><a href="#pauseAll" class="hash-link" aria-label="Direct link to pauseAll" title="Direct link to pauseAll">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L855"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Chrono<!-- -->.</code><code class="green_DgR4">pauseAll</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>
+  Pauses all active Scopes at once. Equivalent to calling <code>scope:pause()</code> on
+  every Scope individually.
+</p>
+<p>Useful for game-wide pause states such as cutscenes or menus.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="resumeAll"><code style="text-decoration:none">resumeAll</code><a href="#resumeAll" class="hash-link" aria-label="Direct link to resumeAll" title="Direct link to resumeAll">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L870"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Chrono<!-- -->.</code><code class="green_DgR4">resumeAll</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>
+  Resumes all active Scopes at once. Equivalent to calling <code>scope:resume()</code> on
+  every Scope individually.
+</p>
+</div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
+    &quot;functions&quot;: [
+        {
+            &quot;name&quot;: &quot;createScope&quot;,
+            &quot;desc&quot;: &quot;Creates a new independent Scope. Each Scope maintains its own pause state,\ntime scale, and elapsed time. Scopes do not interfere with each other.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;config&quot;,
+                    &quot;desc&quot;: &quot;Optional configuration. `timeScale` sets the initial time multiplier (default: `1.0`). `onError` is called when a task callback throws, receiving the error message and the task name.&quot;,
+                    &quot;lua_type&quot;: &quot;{timeScale: number?, onError: ((err: string, name: string) -&gt; ())?}?&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Scope&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 774,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;profile&quot;,
+            &quot;desc&quot;: &quot;Returns profiling data for all tasks that have executed at least once since the\nlast `reset_profiler()` call (or since the module was loaded).\n\nTask names come from the `name` field in each task&#x27;s config table. Tasks without\na name are grouped under `&lt;anonymous&gt;`.\n\nTimes are computed over a rolling window of the last 128 samples per task.\n\n```lua\nlocal prof = chrono.profile()\nfor name, data in pairs(prof) do\n\tprint(name, \&quot;avg:\&quot;, data.avgMs, \&quot;p99:\&quot;, data.p99Ms)\nend\n```&quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;{[string]: {name: string, count: number, avgMs: number, maxMs: number, p99Ms: number, totalMs: number}}&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 819,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;resetProfiler&quot;,
+            &quot;desc&quot;: &quot;Clears all profiler data accumulated since the last reset or module load.&quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 841,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;pauseAll&quot;,
+            &quot;desc&quot;: &quot;Pauses all active Scopes at once. Equivalent to calling `scope:pause()` on\nevery Scope individually.\n\nUseful for game-wide pause states such as cutscenes or menus.&quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 855,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;resumeAll&quot;,
+            &quot;desc&quot;: &quot;Resumes all active Scopes at once. Equivalent to calling `scope:resume()` on\nevery Scope individually.&quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 870,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        }
+    ],
+    &quot;properties&quot;: [],
+    &quot;types&quot;: [],
+    &quot;name&quot;: &quot;Chrono&quot;,
+    &quot;desc&quot;: &quot;A scope-based task scheduler for Roblox. Schedule recurring tasks, fixed-rate\nticks, one-shot delays, and per-frame callbacks — all tied to a `Scope`&#x27;s lifecycle.\n\nAll tasks created through a Scope are automatically cleaned up when the Scope\nis destroyed, making chrono safe to use in component-based or OOP architectures\nwithout manual cleanup bookkeeping.\n\n```lua\nlocal chrono = require(path.to.chrono)\n\nlocal scope = chrono.scope()\n\nscope:tick(60, function(dt)\n\tplayer.position += player.velocity * dt\nend)\n\nscope:every(5, function()\n\tprint(\&quot;every 5 seconds\&quot;)\nend)\n\nscope:after(10, function()\n\tscope:destroy() -- cleans up all tasks at once\nend)\n```&quot;,
+    &quot;source&quot;: {
+        &quot;line&quot;: 764,
+        &quot;path&quot;: &quot;src/Chrono.luau&quot;
+    }
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#createScope" class="table-of-contents__link toc-highlight">.createScope</a></li><li><a href="#pauseAll" class="table-of-contents__link toc-highlight">.pauseAll</a></li><li><a href="#profile" class="table-of-contents__link toc-highlight">.profile</a></li><li><a href="#resetProfiler" class="table-of-contents__link toc-highlight">.resetProfiler</a></li><li><a href="#resumeAll" class="table-of-contents__link toc-highlight">.resumeAll</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 iamthebestts. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

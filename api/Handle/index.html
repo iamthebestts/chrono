@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="plugin-moonwave plugin-id-moonwave" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">Handle | chrono</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://iamthebestts.github.io/chrono/api/Handle"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Handle | chrono"><meta data-rh="true" name="description" content="A reference to a single scheduled task, returned by Scope scheduling methods.
+
+Use a Handle to cancel, pause, resume, or reconfigure a task after scheduling.
+A Handle becomes invalid when `:cancel()` is called or when the parent Scope
+is destroyed. Calling any method on an invalid Handle throws an error.
+
+```lua
+local handle = scope:every(5, function()
+	print(&quot;tick&quot;)
+end)
+
+handle:pause()
+handle:setInterval(10)
+handle:resume()
+handle:cancel()
+```"><meta data-rh="true" property="og:description" content="A reference to a single scheduled task, returned by Scope scheduling methods.
+
+Use a Handle to cancel, pause, resume, or reconfigure a task after scheduling.
+A Handle becomes invalid when `:cancel()` is called or when the parent Scope
+is destroyed. Calling any method on an invalid Handle throws an error.
+
+```lua
+local handle = scope:every(5, function()
+	print(&quot;tick&quot;)
+end)
+
+handle:pause()
+handle:setInterval(10)
+handle:resume()
+handle:cancel()
+```"><link data-rh="true" rel="canonical" href="https://iamthebestts.github.io/chrono/api/Handle"><link data-rh="true" rel="alternate" href="https://iamthebestts.github.io/chrono/api/Handle" hreflang="en"><link data-rh="true" rel="alternate" href="https://iamthebestts.github.io/chrono/api/Handle" hreflang="x-default"><link rel="stylesheet" href="/chrono/assets/css/styles.b9f2c64d.css">
+<script src="/chrono/assets/js/runtime~main.7e647dec.js" defer="defer"></script>
+<script src="/chrono/assets/js/main.d7f5d513.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();null!==e?t(e):window.matchMedia("(prefers-color-scheme: dark)").matches?t("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,t("light"))}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/chrono/"><b class="navbar__title text--truncate">chrono</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/chrono/api/">API</a><a class="navbar__item navbar__link" href="/chrono/changelog">Changelog</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/iamthebestts/chrono" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input id="search_input_react" type="search" placeholder="Loading..." aria-label="Search" class="navbar__search-input search-bar" disabled=""></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/chrono/api/Chrono">API</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/chrono/api/Chrono">​Chrono</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/chrono/api/Scope">​Scope</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/chrono/api/Handle">​Handle</a></li></ul></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">Handle</span></h1><div class="luaClassTags_EipM"></div><div>
+<p>A reference to a single scheduled task, returned by Scope scheduling methods.</p>
+<p>
+  Use a Handle to cancel, pause, resume, or reconfigure a task after scheduling.
+  A Handle becomes invalid when <code>:cancel()</code> is called or when the parent Scope
+  is destroyed. Calling any method on an invalid Handle throws an error.
+</p>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> handle <span class="token operator">=</span> scope<span class="token punctuation">:</span><span class="token function">every</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"tick"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">)</span>
+
+handle<span class="token punctuation">:</span><span class="token function">pause</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+handle<span class="token punctuation">:</span><span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+handle<span class="token punctuation">:</span><span class="token function">resume</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+handle<span class="token punctuation">:</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="cancel"><code style="text-decoration:none">cancel</code><a href="#cancel" class="hash-link" aria-label="Direct link to cancel" title="Direct link to cancel">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L166"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Handle<!-- -->.</code><code class="green_DgR4">cancel</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">HandleInternal</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>
+  Removes this task from the schedule permanently. The Handle becomes invalid
+  immediately and cannot be paused, resumed, or cancelled again.
+</p>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Handle is already cancelled&quot;</td><td>Thrown if called on an already-cancelled Handle.</td></tr><tr><td>&quot;Parent scope is destroyed&quot;</td><td>Thrown if the parent Scope was destroyed.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="pause"><code style="text-decoration:none">pause</code><a href="#pause" class="hash-link" aria-label="Direct link to pause" title="Direct link to pause">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L188"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Handle<!-- -->.</code><code class="green_DgR4">pause</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">HandleInternal</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>
+  Pauses execution of this individual task. The task will not fire while paused,
+  regardless of the parent Scope's own pause state.
+</p>
+<p>Calling <code>pause()</code> on an already-paused Handle is a no-op.</p>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Handle is cancelled&quot;</td><td>Thrown if the Handle is invalid.</td></tr><tr><td>&quot;Parent scope is destroyed&quot;</td><td>Thrown if the parent Scope was destroyed.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="resume"><code style="text-decoration:none">resume</code><a href="#resume" class="hash-link" aria-label="Direct link to resume" title="Direct link to resume">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L202"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Handle<!-- -->.</code><code class="green_DgR4">resume</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">HandleInternal</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>
+  Resumes execution of this task after <code>handle:pause()</code>. If the parent Scope is
+  also paused, the task will not fire until the Scope is resumed as well.
+</p>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Handle is cancelled&quot;</td><td>Thrown if the Handle is invalid.</td></tr><tr><td>&quot;Parent scope is destroyed&quot;</td><td>Thrown if the parent Scope was destroyed.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="setInterval"><code style="text-decoration:none">setInterval</code><a href="#setInterval" class="hash-link" aria-label="Direct link to setInterval" title="Direct link to setInterval">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L223"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Handle<!-- -->.</code><code class="green_DgR4">setInterval</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">HandleInternal</code><code>,</code></div><div><code>interval<!-- -->: </code><code class="blue_P4bS">number</code><span class="inlineDescription_G7Er">-- <span>
+<p>New interval in seconds.</p>
+</span></span></div></div><code>) → </code><code>(</code><code>)</code></div><div>
+<p>
+  Changes the execution interval for <code>every</code> or <code>tick</code> tasks. The accumulated
+  time resets, so the next execution happens <code>interval</code> seconds from this call.
+</p>
+
+  
+    
+    
+      <div class="admonition admonition-caution alert alert--warning">
+        <div class="admonition-heading">
+          <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                <path d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path>
+              </svg></span><span class="admonition-title">CAUTION</span></h5>
+        </div>
+        <div class="admonition-content">
+          <p>
+            Only valid for Handles created with <code>scope:every()</code> or <code>scope:tick()</code>. Calling
+            this on an <code>after</code> or <code>frame</code> Handle throws an error.
+          </p>
+        </div>
+      </div>
+    
+  
+
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;setInterval is only valid for &#x27;every&#x27; and &#x27;tick&#x27; handles&quot;</td><td>Thrown for incompatible handle types.</td></tr><tr><td>&quot;Handle is cancelled&quot;</td><td>Thrown if the Handle is invalid.</td></tr><tr><td>&quot;Parent scope is destroyed&quot;</td><td>Thrown if the parent Scope was destroyed.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="isPaused"><code style="text-decoration:none">isPaused</code><a href="#isPaused" class="hash-link" aria-label="Direct link to isPaused" title="Direct link to isPaused">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L241"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Handle<!-- -->.</code><code class="green_DgR4">isPaused</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">HandleInternal</code><code>) → </code><code class="blue_P4bS">boolean</code></div><div>
+<p>
+  Returns whether this individual task is paused. Does <strong>not</strong> account for the
+  parent Scope's pause state — only reflects whether <code>handle:pause()</code> was called.
+</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="isCancelled"><code style="text-decoration:none">isCancelled</code><a href="#isCancelled" class="hash-link" aria-label="Direct link to isCancelled" title="Direct link to isCancelled">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L253"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Handle<!-- -->.</code><code class="green_DgR4">isCancelled</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">HandleInternal</code><code>) → </code><code class="blue_P4bS">boolean</code></div><div>
+<p>Returns whether this task has been cancelled.</p>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Parent scope is destroyed&quot;</td><td>Thrown if the parent Scope was destroyed.</td></tr></tbody></table></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
+    &quot;functions&quot;: [
+        {
+            &quot;name&quot;: &quot;cancel&quot;,
+            &quot;desc&quot;: &quot;Removes this task from the schedule permanently. The Handle becomes invalid\nimmediately and cannot be paused, resumed, or cancelled again.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;self&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;HandleInternal&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Handle is already cancelled\&quot;&quot;,
+                    &quot;desc&quot;: &quot;Thrown if called on an already-cancelled Handle.&quot;
+                },
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Parent scope is destroyed\&quot;&quot;,
+                    &quot;desc&quot;: &quot;Thrown if the parent Scope was destroyed.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 166,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;pause&quot;,
+            &quot;desc&quot;: &quot;Pauses execution of this individual task. The task will not fire while paused,\nregardless of the parent Scope&#x27;s own pause state.\n\nCalling `pause()` on an already-paused Handle is a no-op.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;self&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;HandleInternal&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Handle is cancelled\&quot;&quot;,
+                    &quot;desc&quot;: &quot;Thrown if the Handle is invalid.&quot;
+                },
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Parent scope is destroyed\&quot;&quot;,
+                    &quot;desc&quot;: &quot;Thrown if the parent Scope was destroyed.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 188,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;resume&quot;,
+            &quot;desc&quot;: &quot;Resumes execution of this task after `handle:pause()`. If the parent Scope is\nalso paused, the task will not fire until the Scope is resumed as well.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;self&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;HandleInternal&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Handle is cancelled\&quot;&quot;,
+                    &quot;desc&quot;: &quot;Thrown if the Handle is invalid.&quot;
+                },
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Parent scope is destroyed\&quot;&quot;,
+                    &quot;desc&quot;: &quot;Thrown if the parent Scope was destroyed.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 202,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;setInterval&quot;,
+            &quot;desc&quot;: &quot;Changes the execution interval for `every` or `tick` tasks. The accumulated\ntime resets, so the next execution happens `interval` seconds from this call.\n\n:::caution\nOnly valid for Handles created with `scope:every()` or `scope:tick()`. Calling\nthis on an `after` or `frame` Handle throws an error.\n:::&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;self&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;HandleInternal&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;interval&quot;,
+                    &quot;desc&quot;: &quot;New interval in seconds.&quot;,
+                    &quot;lua_type&quot;: &quot;number&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;setInterval is only valid for &#x27;every&#x27; and &#x27;tick&#x27; handles\&quot;&quot;,
+                    &quot;desc&quot;: &quot;Thrown for incompatible handle types.&quot;
+                },
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Handle is cancelled\&quot;&quot;,
+                    &quot;desc&quot;: &quot;Thrown if the Handle is invalid.&quot;
+                },
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Parent scope is destroyed\&quot;&quot;,
+                    &quot;desc&quot;: &quot;Thrown if the parent Scope was destroyed.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 223,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;isPaused&quot;,
+            &quot;desc&quot;: &quot;Returns whether this individual task is paused. Does **not** account for the\nparent Scope&#x27;s pause state — only reflects whether `handle:pause()` was called.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;self&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;HandleInternal&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 241,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;isCancelled&quot;,
+            &quot;desc&quot;: &quot;Returns whether this task has been cancelled.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;self&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;HandleInternal&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Parent scope is destroyed\&quot;&quot;,
+                    &quot;desc&quot;: &quot;Thrown if the parent Scope was destroyed.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 253,
+                &quot;path&quot;: &quot;src/Chrono.luau&quot;
+            }
+        }
+    ],
+    &quot;properties&quot;: [],
+    &quot;types&quot;: [],
+    &quot;name&quot;: &quot;Handle&quot;,
+    &quot;desc&quot;: &quot;A reference to a single scheduled task, returned by Scope scheduling methods.\n\nUse a Handle to cancel, pause, resume, or reconfigure a task after scheduling.\nA Handle becomes invalid when `:cancel()` is called or when the parent Scope\nis destroyed. Calling any method on an invalid Handle throws an error.\n\n```lua\nlocal handle = scope:every(5, function()\n\tprint(\&quot;tick\&quot;)\nend)\n\nhandle:pause()\nhandle:setInterval(10)\nhandle:resume()\nhandle:cancel()\n```&quot;,
+    &quot;source&quot;: {
+        &quot;line&quot;: 145,
+        &quot;path&quot;: &quot;src/Chrono.luau&quot;
+    }
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#cancel" class="table-of-contents__link toc-highlight">.cancel</a></li><li><a href="#isCancelled" class="table-of-contents__link toc-highlight">.isCancelled</a></li><li><a href="#isPaused" class="table-of-contents__link toc-highlight">.isPaused</a></li><li><a href="#pause" class="table-of-contents__link toc-highlight">.pause</a></li><li><a href="#resume" class="table-of-contents__link toc-highlight">.resume</a></li><li><a href="#setInterval" class="table-of-contents__link toc-highlight">.setInterval</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 iamthebestts. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
