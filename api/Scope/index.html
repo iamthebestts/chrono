@@ -36,8 +36,8 @@ scope:after(10, function()
 	scope:destroy() -- cleans up all tasks at once
 end)
 ```"><link data-rh="true" rel="canonical" href="https://iamthebestts.github.io/chrono/api/Scope"><link data-rh="true" rel="alternate" href="https://iamthebestts.github.io/chrono/api/Scope" hreflang="en"><link data-rh="true" rel="alternate" href="https://iamthebestts.github.io/chrono/api/Scope" hreflang="x-default"><link rel="stylesheet" href="/chrono/assets/css/styles.b9f2c64d.css">
-<script src="/chrono/assets/js/runtime~main.7e647dec.js" defer="defer"></script>
-<script src="/chrono/assets/js/main.d7f5d513.js" defer="defer"></script>
+<script src="/chrono/assets/js/runtime~main.3e422e97.js" defer="defer"></script>
+<script src="/chrono/assets/js/main.f5008362.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();null!==e?t(e):window.matchMedia("(prefers-color-scheme: dark)").matches?t("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,t("light"))}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/chrono/"><b class="navbar__title text--truncate">chrono</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/chrono/api/">API</a><a class="navbar__item navbar__link" href="/chrono/changelog">Changelog</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/iamthebestts/chrono" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input id="search_input_react" type="search" placeholder="Loading..." aria-label="Search" class="navbar__search-input search-bar" disabled=""></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/chrono/api/Chrono">API</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/chrono/api/Chrono">​Chrono</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/chrono/api/Scope">​Scope</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/chrono/api/Handle">​Handle</a></li></ul></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">Scope</span></h1><div class="luaClassTags_EipM"></div><div>
@@ -57,49 +57,50 @@ scope<span class="token punctuation">:</span><span class="token function">after<
 	scope<span class="token punctuation">:</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">-- cleans up all tasks at once</span>
 <span class="token keyword">end</span><span class="token punctuation">)</span>
 </code></pre>
-</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="timeScale"><code style="text-decoration:none">timeScale</code><a href="#timeScale" class="hash-link" aria-label="Direct link to timeScale" title="Direct link to timeScale">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L293"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.<!-- -->timeScale<!-- -->:<!-- --> </code> <code class="blue_P4bS">number</code></div><div>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="timeScale"><code style="text-decoration:none">timeScale</code><a href="#timeScale" class="hash-link" aria-label="Direct link to timeScale" title="Direct link to timeScale">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L294"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.<!-- -->timeScale<!-- -->:<!-- --> </code> <code class="blue_P4bS">number</code></div><div>
 <p>
   The current time multiplier for this Scope. Affects how fast <code>after</code>, <code>every</code>,
   and <code>tick</code> tasks advance. Defaults to <code>1.0</code>. Modify via <code>setTimeScale()</code>.
 </p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="isPaused"><code style="text-decoration:none">isPaused</code><a href="#isPaused" class="hash-link" aria-label="Direct link to isPaused" title="Direct link to isPaused">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L301"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.<!-- -->isPaused<!-- -->:<!-- --> </code> <code class="blue_P4bS">boolean</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="isPaused"><code style="text-decoration:none">isPaused</code><a href="#isPaused" class="hash-link" aria-label="Direct link to isPaused" title="Direct link to isPaused">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L302"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.<!-- -->isPaused<!-- -->:<!-- --> </code> <code class="blue_P4bS">boolean</code></div><div>
 <p>Whether this Scope is currently paused.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="isDestroyed"><code style="text-decoration:none">isDestroyed</code><a href="#isDestroyed" class="hash-link" aria-label="Direct link to isDestroyed" title="Direct link to isDestroyed">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L310"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.<!-- -->isDestroyed<!-- -->:<!-- --> </code> <code class="blue_P4bS">boolean</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="isDestroyed"><code style="text-decoration:none">isDestroyed</code><a href="#isDestroyed" class="hash-link" aria-label="Direct link to isDestroyed" title="Direct link to isDestroyed">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L311"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.<!-- -->isDestroyed<!-- -->:<!-- --> </code> <code class="blue_P4bS">boolean</code></div><div>
 <p>
   Whether this Scope has been permanently destroyed. A destroyed Scope cannot
   be used and all its child Handles are invalid.
 </p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="elapsedTime"><code style="text-decoration:none">elapsedTime</code><a href="#elapsedTime" class="hash-link" aria-label="Direct link to elapsedTime" title="Direct link to elapsedTime">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L319"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.<!-- -->elapsedTime<!-- -->:<!-- --> </code> <code class="blue_P4bS">number</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="elapsedTime"><code style="text-decoration:none">elapsedTime</code><a href="#elapsedTime" class="hash-link" aria-label="Direct link to elapsedTime" title="Direct link to elapsedTime">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L320"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.<!-- -->elapsedTime<!-- -->:<!-- --> </code> <code class="blue_P4bS">number</code></div><div>
 <p>
   Total time elapsed in this Scope in seconds, scaled by <code>timeScale</code>. Does not
   advance while the Scope is paused.
 </p>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="after"><code style="text-decoration:none">after</code><a href="#after" class="hash-link" aria-label="Direct link to after" title="Direct link to after">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L394"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">after</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>,</code></div><div><code>delay<!-- -->: </code><code class="blue_P4bS">number</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="after"><code style="text-decoration:none">after</code><a href="#after" class="hash-link" aria-label="Direct link to after" title="Direct link to after">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L396"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">after</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>,</code></div><div><code>delay<!-- -->: </code><code class="blue_P4bS">number</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>Delay in seconds. Values ≤ 0 execute on the next frame.</p>
 </span></span></div><div><code>fn<!-- -->: </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>The function to execute.</p>
-</span></span></div><div><code>config<!-- -->: </code><code class="purple_ieR2">{</code><code>name<!-- -->: </code><code class="blue_P4bS">string?</code><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
-<p>Optional configuration table.</p>
+</span></span></div><div><code>config<!-- -->: </code><code class="purple_ieR2">{</code><div class="inset_uKQm"><code>name<!-- -->: </code><code class="blue_P4bS">string?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>maxCatchup<!-- -->: </code><code class="blue_P4bS">number?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>fireImmediately<!-- -->: </code><code class="blue_P4bS">boolean?</code></div><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Optional configuration. <code>name</code> labels this task in the profiler.</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/chrono/api/Handle">Handle</a></code></div><div>
 <p>
   Schedules a function to execute once after <code>delay</code> seconds. The Handle is
   automatically cancelled after the function runs.
 </p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="every"><code style="text-decoration:none">every</code><a href="#every" class="hash-link" aria-label="Direct link to every" title="Direct link to every">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L418"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">every</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>,</code></div><div><code>interval<!-- -->: </code><code class="blue_P4bS">number</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="every"><code style="text-decoration:none">every</code><a href="#every" class="hash-link" aria-label="Direct link to every" title="Direct link to every">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L421"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">every</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>,</code></div><div><code>interval<!-- -->: </code><code class="blue_P4bS">number</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>Time between executions in seconds.</p>
 </span></span></div><div><code>fn<!-- -->: </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>The function to execute.</p>
-</span></span></div><div><code>config<!-- -->: </code><code class="purple_ieR2">{</code><code>name<!-- -->: </code><code class="blue_P4bS">string?</code><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
-<p>Optional configuration table.</p>
+</span></span></div><div><code>config<!-- -->: </code><code class="purple_ieR2">{</code><div class="inset_uKQm"><code>name<!-- -->: </code><code class="blue_P4bS">string?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>maxCatchup<!-- -->: </code><code class="blue_P4bS">number?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>fireImmediately<!-- -->: </code><code class="blue_P4bS">boolean?</code></div><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Optional configuration. <code>fireImmediately</code> controls whether the task fires on registration (default: <code>true</code>).</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/chrono/api/Handle">Handle</a></code></div><div>
 <p>
-  Schedules a function to execute immediately and then repeatedly every <code>interval</code>
-  seconds. Respects the Scope's <code>timeScale</code>.
+  Schedules a function to execute repeatedly every <code>interval</code> seconds. By default,
+  fires immediately on registration, then repeats. Set <code>fireImmediately = false</code> in
+  the config to skip the first execution. Respects the Scope's <code>timeScale</code>.
 </p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="frame"><code style="text-decoration:none">frame</code><a href="#frame" class="hash-link" aria-label="Direct link to frame" title="Direct link to frame">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L441"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">frame</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>,</code></div><div><code>fn<!-- -->: </code><code class="purple_ieR2">(</code><code>dt<!-- -->: </code><code class="blue_P4bS">number</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="frame"><code style="text-decoration:none">frame</code><a href="#frame" class="hash-link" aria-label="Direct link to frame" title="Direct link to frame">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L444"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">frame</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>,</code></div><div><code>fn<!-- -->: </code><code class="purple_ieR2">(</code><code>dt<!-- -->: </code><code class="blue_P4bS">number</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>Called each frame. <code>dt</code> is the frame delta in seconds, or <code>0</code> when the Scope is paused.</p>
-</span></span></div><div><code>config<!-- -->: </code><code class="purple_ieR2">{</code><code>name<!-- -->: </code><code class="blue_P4bS">string?</code><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
-<p>Optional configuration table.</p>
+</span></span></div><div><code>config<!-- -->: </code><code class="purple_ieR2">{</code><div class="inset_uKQm"><code>name<!-- -->: </code><code class="blue_P4bS">string?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>maxCatchup<!-- -->: </code><code class="blue_P4bS">number?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>fireImmediately<!-- -->: </code><code class="blue_P4bS">boolean?</code></div><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Optional configuration. <code>name</code> labels this task in the profiler.</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/chrono/api/Handle">Handle</a></code></div><div>
 <p>
   Schedules a function to execute every frame via <code>RunService.Heartbeat</code>. Unlike
@@ -107,11 +108,11 @@ scope<span class="token punctuation">:</span><span class="token function">after<
   they receive <code>dt = 0</code> instead of the real frame delta.
 </p>
 <p>Tasks run in order of creation, after all <code>tick</code> tasks for the frame.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="tick"><code style="text-decoration:none">tick</code><a href="#tick" class="hash-link" aria-label="Direct link to tick" title="Direct link to tick">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L464"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">tick</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>,</code></div><div><code>hz<!-- -->: </code><code class="blue_P4bS">number</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="tick"><code style="text-decoration:none">tick</code><a href="#tick" class="hash-link" aria-label="Direct link to tick" title="Direct link to tick">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L463"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">tick</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>,</code></div><div><code>hz<!-- -->: </code><code class="blue_P4bS">number</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>Target executions per second (e.g. <code>60</code> for 60 hz).</p>
 </span></span></div><div><code>fn<!-- -->: </code><code class="purple_ieR2">(</code><code>dt<!-- -->: </code><code class="blue_P4bS">number</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>Called with a fixed delta of <code>1/hz</code> on each tick.</p>
-</span></span></div><div><code>config<!-- -->: </code><code class="purple_ieR2">{</code><div class="inset_uKQm"><code>name<!-- -->: </code><code class="blue_P4bS">string?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>maxCatchup<!-- -->: </code><code class="blue_P4bS">number?</code></div><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
+</span></span></div><div><code>config<!-- -->: </code><code class="purple_ieR2">{</code><div class="inset_uKQm"><code>name<!-- -->: </code><code class="blue_P4bS">string?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>maxCatchup<!-- -->: </code><code class="blue_P4bS">number?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>fireImmediately<!-- -->: </code><code class="blue_P4bS">boolean?</code></div><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
 <p>Optional configuration. <code>maxCatchup</code> caps how many times the task can fire in a single frame, preventing hitches after freezes (default: unlimited).</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/chrono/api/Handle">Handle</a></code></div><div>
 <p>
@@ -120,19 +121,19 @@ scope<span class="token punctuation">:</span><span class="token function">after<
   to compensate. Respects the Scope's <code>timeScale</code>.
 </p>
 <p>Tasks run in order of creation, before all <code>frame</code> tasks for the frame.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="pause"><code style="text-decoration:none">pause</code><a href="#pause" class="hash-link" aria-label="Direct link to pause" title="Direct link to pause">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L482"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">pause</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>) → </code><code>(</code><code>)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="pause"><code style="text-decoration:none">pause</code><a href="#pause" class="hash-link" aria-label="Direct link to pause" title="Direct link to pause">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L481"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">pause</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>) → </code><code>(</code><code>)</code></div><div>
 <p>
   Pauses all tasks in this Scope. Timers do not advance while paused. <code>frame</code>
   tasks still fire each frame but receive <code>dt = 0</code>.
 </p>
 <p>Calling <code>pause()</code> on an already-paused Scope is a no-op.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="resume"><code style="text-decoration:none">resume</code><a href="#resume" class="hash-link" aria-label="Direct link to resume" title="Direct link to resume">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L495"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">resume</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>) → </code><code>(</code><code>)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="resume"><code style="text-decoration:none">resume</code><a href="#resume" class="hash-link" aria-label="Direct link to resume" title="Direct link to resume">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L494"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">resume</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>) → </code><code>(</code><code>)</code></div><div>
 <p>
   Resumes all tasks in this Scope after a pause. No time is backfilled — timers
   continue from where they were when the Scope was paused.
 </p>
-</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Scope is destroyed&quot;</td><td>Thrown if the Scope was destroyed.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="setTimeScale"><code style="text-decoration:none">setTimeScale</code><a href="#setTimeScale" class="hash-link" aria-label="Direct link to setTimeScale" title="Direct link to setTimeScale">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L515"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">setTimeScale</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>,</code></div><div><code>scale<!-- -->: </code><code class="blue_P4bS">number</code><span class="inlineDescription_G7Er">-- <span>
-<p>Time multiplier. Negative values have undefined behavior.</p>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Scope is destroyed&quot;</td><td>Thrown if the Scope was destroyed.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="setTimeScale"><code style="text-decoration:none">setTimeScale</code><a href="#setTimeScale" class="hash-link" aria-label="Direct link to setTimeScale" title="Direct link to setTimeScale">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L514"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">setTimeScale</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>,</code></div><div><code>scale<!-- -->: </code><code class="blue_P4bS">number</code><span class="inlineDescription_G7Er">-- <span>
+<p>Time multiplier. Negative values are clamped to <code>0</code> (a warning is emitted).</p>
 </span></span></div></div><code>) → </code><code>(</code><code>)</code></div><div>
 <p>
   Sets the time multiplier for this Scope. Affects how fast <code>after</code>, <code>every</code>, and
@@ -164,7 +165,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
     </tr>
   </tbody>
 </table>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="destroy"><code style="text-decoration:none">destroy</code><a href="#destroy" class="hash-link" aria-label="Direct link to destroy" title="Direct link to destroy">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L531"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">destroy</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>) → </code><code>(</code><code>)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="destroy"><code style="text-decoration:none">destroy</code><a href="#destroy" class="hash-link" aria-label="Direct link to destroy" title="Direct link to destroy">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/iamthebestts/chrono/blob/master/src/Chrono.luau#L534"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Scope<!-- -->.</code><code class="green_DgR4">destroy</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS">ScopeInternal</code><code>) → </code><code>(</code><code>)</code></div><div>
 <p>
   Permanently destroys this Scope and cancels all its tasks. All child Handles
   become invalid. This operation cannot be undone.
@@ -212,8 +213,8 @@ scope<span class="token punctuation">:</span><span class="token function">after<
                 },
                 {
                     &quot;name&quot;: &quot;config&quot;,
-                    &quot;desc&quot;: &quot;Optional configuration table.&quot;,
-                    &quot;lua_type&quot;: &quot;{name: string?}?&quot;
+                    &quot;desc&quot;: &quot;Optional configuration. `name` labels this task in the profiler.&quot;,
+                    &quot;lua_type&quot;: &quot;{name: string?, maxCatchup: number?, fireImmediately: boolean?}?&quot;
                 }
             ],
             &quot;returns&quot;: [
@@ -224,13 +225,13 @@ scope<span class="token punctuation">:</span><span class="token function">after<
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 394,
+                &quot;line&quot;: 396,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         },
         {
             &quot;name&quot;: &quot;every&quot;,
-            &quot;desc&quot;: &quot;Schedules a function to execute immediately and then repeatedly every `interval`\nseconds. Respects the Scope&#x27;s `timeScale`.&quot;,
+            &quot;desc&quot;: &quot;Schedules a function to execute repeatedly every `interval` seconds. By default,\nfires immediately on registration, then repeats. Set `fireImmediately = false` in\nthe config to skip the first execution. Respects the Scope&#x27;s `timeScale`.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
@@ -249,8 +250,8 @@ scope<span class="token punctuation">:</span><span class="token function">after<
                 },
                 {
                     &quot;name&quot;: &quot;config&quot;,
-                    &quot;desc&quot;: &quot;Optional configuration table.&quot;,
-                    &quot;lua_type&quot;: &quot;{name: string?}?&quot;
+                    &quot;desc&quot;: &quot;Optional configuration. `fireImmediately` controls whether the task fires on registration (default: `true`).&quot;,
+                    &quot;lua_type&quot;: &quot;{name: string?, maxCatchup: number?, fireImmediately: boolean?}?&quot;
                 }
             ],
             &quot;returns&quot;: [
@@ -261,7 +262,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 418,
+                &quot;line&quot;: 421,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         },
@@ -281,8 +282,8 @@ scope<span class="token punctuation">:</span><span class="token function">after<
                 },
                 {
                     &quot;name&quot;: &quot;config&quot;,
-                    &quot;desc&quot;: &quot;Optional configuration table.&quot;,
-                    &quot;lua_type&quot;: &quot;{name: string?}?&quot;
+                    &quot;desc&quot;: &quot;Optional configuration. `name` labels this task in the profiler.&quot;,
+                    &quot;lua_type&quot;: &quot;{name: string?, maxCatchup: number?, fireImmediately: boolean?}?&quot;
                 }
             ],
             &quot;returns&quot;: [
@@ -293,7 +294,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 441,
+                &quot;line&quot;: 444,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         },
@@ -319,7 +320,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
                 {
                     &quot;name&quot;: &quot;config&quot;,
                     &quot;desc&quot;: &quot;Optional configuration. `maxCatchup` caps how many times the task can fire in a single frame, preventing hitches after freezes (default: unlimited).&quot;,
-                    &quot;lua_type&quot;: &quot;{name: string?, maxCatchup: number?}?&quot;
+                    &quot;lua_type&quot;: &quot;{name: string?, maxCatchup: number?, fireImmediately: boolean?}?&quot;
                 }
             ],
             &quot;returns&quot;: [
@@ -330,7 +331,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 464,
+                &quot;line&quot;: 463,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         },
@@ -347,7 +348,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 482,
+                &quot;line&quot;: 481,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         },
@@ -370,7 +371,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
                 }
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 495,
+                &quot;line&quot;: 494,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         },
@@ -385,14 +386,14 @@ scope<span class="token punctuation">:</span><span class="token function">after<
                 },
                 {
                     &quot;name&quot;: &quot;scale&quot;,
-                    &quot;desc&quot;: &quot;Time multiplier. Negative values have undefined behavior.&quot;,
+                    &quot;desc&quot;: &quot;Time multiplier. Negative values are clamped to `0` (a warning is emitted).&quot;,
                     &quot;lua_type&quot;: &quot;number&quot;
                 }
             ],
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 515,
+                &quot;line&quot;: 514,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         },
@@ -409,7 +410,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 531,
+                &quot;line&quot;: 534,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         }
@@ -421,7 +422,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
             &quot;lua_type&quot;: &quot;number&quot;,
             &quot;readonly&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 293,
+                &quot;line&quot;: 294,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         },
@@ -431,7 +432,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
             &quot;lua_type&quot;: &quot;boolean&quot;,
             &quot;readonly&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 301,
+                &quot;line&quot;: 302,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         },
@@ -441,7 +442,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
             &quot;lua_type&quot;: &quot;boolean&quot;,
             &quot;readonly&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 310,
+                &quot;line&quot;: 311,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         },
@@ -451,7 +452,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
             &quot;lua_type&quot;: &quot;number&quot;,
             &quot;readonly&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 319,
+                &quot;line&quot;: 320,
                 &quot;path&quot;: &quot;src/Chrono.luau&quot;
             }
         }
@@ -460,7 +461,7 @@ scope<span class="token punctuation">:</span><span class="token function">after<
     &quot;name&quot;: &quot;Scope&quot;,
     &quot;desc&quot;: &quot;A container for scheduled work. All tasks within a Scope share the same\nlifecycle: pausing, resuming, or destroying the Scope affects every task\nregistered to it.\n\nCreated via `chrono.scope()`.\n\n```lua\nlocal scope = chrono.scope({ timeScale = 0.5 })\n\nscope:tick(60, function(dt)\n\tplayer.position += player.velocity * dt\nend)\n\nscope:after(10, function()\n\tscope:destroy() -- cleans up all tasks at once\nend)\n```&quot;,
     &quot;source&quot;: {
-        &quot;line&quot;: 284,
+        &quot;line&quot;: 285,
         &quot;path&quot;: &quot;src/Chrono.luau&quot;
     }
 }</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#elapsedTime" class="table-of-contents__link toc-highlight">elapsedTime</a></li><li><a href="#isDestroyed" class="table-of-contents__link toc-highlight">isDestroyed</a></li><li><a href="#isPaused" class="table-of-contents__link toc-highlight">isPaused</a></li><li><a href="#timeScale" class="table-of-contents__link toc-highlight">timeScale</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#after" class="table-of-contents__link toc-highlight">.after</a></li><li><a href="#destroy" class="table-of-contents__link toc-highlight">.destroy</a></li><li><a href="#every" class="table-of-contents__link toc-highlight">.every</a></li><li><a href="#frame" class="table-of-contents__link toc-highlight">.frame</a></li><li><a href="#pause" class="table-of-contents__link toc-highlight">.pause</a></li><li><a href="#resume" class="table-of-contents__link toc-highlight">.resume</a></li><li><a href="#setTimeScale" class="table-of-contents__link toc-highlight">.setTimeScale</a></li><li><a href="#tick" class="table-of-contents__link toc-highlight">.tick</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 iamthebestts. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
