@@ -21,5 +21,15 @@ runStep("build", {
 	"build",
 	"default.project.json",
 	"-o",
-	"lux.rbxm",
+	"chrono.rbxm",
+})
+
+-- Regenerate sourcemap from test.project.json so the IDE sees the full
+-- package hierarchy (ReplicatedStorage.Packages + DevPackages) for correct type resolution.
+runStep("sourcemap (IDE)", {
+	"rojo",
+	"sourcemap",
+	"test.project.json",
+	"-o",
+	"sourcemap.json",
 })

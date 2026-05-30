@@ -14,7 +14,7 @@ One API for delays, intervals, fixed-rate ticks, and per-frame callbacks — wit
 
 [<img src=".github/assets/link-wally.svg" height="32" alt="Install with Wally" />](https://wally.run/package/iamthebestts/chrono)
 &nbsp;&nbsp;
-[<img src=".github/assets/link-creator-store.svg" height="32" alt="Get on Creator Store" />](https://create.roblox.com/store)
+[<img src=".github/assets/link-creator-store.svg" height="32" alt="Get on Creator Store" />](https://create.roblox.com/store/asset/126210042302490/chrono)
 
 <br/>
 

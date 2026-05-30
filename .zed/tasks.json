@@ -1,0 +1,32 @@
+[
+  {
+    "label": "selene lint",
+    "command": "selene",
+    "args": ["--display-style", "json", "$file"],
+    "reveal": "always",
+  },
+  {
+    "label": "build",
+    "command": "powershell",
+    "args": ["-ExecutionPolicy", "Bypass", "-File", "scripts/build.ps1"],
+    "reveal": "always",
+  },
+  {
+    "label": "tests",
+    "command": "powershell",
+    "args": ["-ExecutionPolicy", "Bypass", "-File", "scripts/tests.ps1"],
+    "reveal": "always",
+  },
+  {
+    "label": "analyze",
+    "command": "powershell",
+    "args": ["-ExecutionPolicy", "Bypass", "-File", "scripts/analyze.ps1"],
+    "reveal": "always",
+  },
+  {
+    "label": "install",
+    "command": "powershell",
+    "args": ["-ExecutionPolicy", "Bypass", "-File", "scripts/install.ps1"],
+    "reveal": "always",
+  },
+]
